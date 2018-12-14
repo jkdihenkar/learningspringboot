@@ -1,4 +1,4 @@
-package simplecontrollers;
+package com.jdcomponents.simplecontrollers;
 
 public class HelloWorld {
 
