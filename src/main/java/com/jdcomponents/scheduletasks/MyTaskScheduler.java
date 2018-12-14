@@ -1,5 +1,6 @@
 package com.jdcomponents.scheduletasks;
 
+import com.jdcomponents.dynamicconfigs.DynamicConfigs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,14 @@ public class MyTaskScheduler {
     @Value("${spring.application.name}")
     private String appName;
 
+    @Autowired
+    private DynamicConfigs dynamicConfigs;
+
     private Logger logger = LoggerFactory.getLogger(MyTaskScheduler.class);
 
     @Scheduled(cron = "0 * * * * *")
     public void sayIAmRunning() {
-        logger.info("My name is {} and I'm running fine", appName);
+        logger.info("My name is {} and I'm running fine at rate {}", appName, dynamicConfigs.getRateOfRequest());
     }
 
 }
